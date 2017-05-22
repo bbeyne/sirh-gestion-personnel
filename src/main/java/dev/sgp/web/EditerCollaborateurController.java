@@ -45,14 +45,15 @@ public class EditerCollaborateurController extends HttpServlet {
 		String nomParam = req.getParameter("nom");
 		String prenomParam = req.getParameter("prenom");
 		resp.setContentType("text/html");
+			resp.setCharacterEncoding("utf-8");
 		if(matriculeParam!=null && titreParam!=null && nomParam!=null && prenomParam!=null){
 			resp.setStatus(201);
-			resp.getWriter().write("Creation d'un collaborateur avec les informations suivantes : <br> matricule= "+matriculeParam 
+			resp.getWriter().write("Création d'un collaborateur avec les informations suivantes : <br> matricule= "+matriculeParam 
 					+",titre= "+titreParam+",nom= "+ nomParam+ ",prenom= "+prenomParam);
 			}
 		else{
 			resp.setStatus(400);
-			resp.getWriter().write("Les parametres suivants sont incorrects : ");
+			resp.getWriter().write("Les paramètres suivants sont incorrects : ");
 			if (matriculeParam==null) resp.getWriter().write("matricule, ");
 			if (titreParam==null) resp.getWriter().write("titre, ");
 			if (nomParam==null) resp.getWriter().write("nom, ");
