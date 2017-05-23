@@ -16,13 +16,13 @@ public class DepartementService {
 		this.listeDepartement.add(new Departement(4, "Administratif"));
 	}
 
-	public List<Departement> listerCollaborateurs() {
+	public List<Departement> listerDepartement() {
 
 	return listeDepartement;
 
 	}
 
-	public void sauvegarderCollaborateur(Departement departement) {
+	public void sauvegarderDepartement(Departement departement) {
 
 	listeDepartement.add(departement);
 

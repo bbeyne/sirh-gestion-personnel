@@ -50,4 +50,34 @@
 		<url-pattern>/collaborateurs/nouveau</url-pattern>
 
 	</servlet-mapping>
+	<servlet>
+
+		<servlet-name>VisiteController</servlet-name>
+
+		<servlet-class>dev.sgp.web.VisiteController</servlet-class>
+
+	</servlet>
+
+	<servlet-mapping>
+
+		<servlet-name>VisiteController</servlet-name>
+
+		<url-pattern>/statistiques</url-pattern>
+
+	</servlet-mapping>
+	<filter>
+
+		<filter-name>TimerFilter</filter-name>
+
+		<filter-class>dev.sgp.filtre.FrequentationFilter</filter-class>
+
+	</filter>
+
+	<filter-mapping>
+
+		<filter-name>TimerFilter</filter-name>
+
+		<url-pattern>/collaborateurs/*</url-pattern>
+
+	</filter-mapping>
 </web-app>
