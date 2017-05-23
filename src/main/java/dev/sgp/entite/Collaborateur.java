@@ -2,6 +2,7 @@ package dev.sgp.entite;
 
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,29 +10,35 @@ import javax.persistence.Id;
 
 @Entity
 public class Collaborateur {
-	public Collaborateur(String matricule, String prenom, String nom, LocalDate date_de_naissance, String adresse,
-			String num_SecuSoc, String emailPro, String photo, boolean actif) {
+	public Collaborateur(String matricule, String prenom, String nom, LocalDate birthday, String adresse,
+			String numSecuSoc, String emailPro, String photo, ZonedDateTime dateCreation, boolean actif) {
 		super();
 		this.matricule = matricule;
 		this.prenom = prenom;
 		this.nom = nom;
-		Date_de_naissance = date_de_naissance;
+		this.birthday = birthday;
 		this.adresse = adresse;
-		Num_SecuSoc = num_SecuSoc;
+		this.numSecuSoc = numSecuSoc;
 		this.emailPro = emailPro;
 		this.photo = photo;
 		this.actif = actif;
+		this.dateCreation=dateCreation;
 	}
 	@Id
 	private String matricule;
 	private String prenom;
 	private String nom;
-	private LocalDate Date_de_naissance;
+	private LocalDate birthday;
 	private String adresse;
-	private String Num_SecuSoc;
+	private String numSecuSoc;
 	private String emailPro;
 	private String photo;
+	private ZonedDateTime dateCreation;
 	private boolean actif;
+	private String intitulePoste;
+	private Departement departement;
+	
+	
 	
 	public String getMatricule() {
 		return matricule;
@@ -52,10 +59,10 @@ public class Collaborateur {
 		this.nom = nom;
 	}
 	public LocalDate getDate_de_naissance() {
-		return Date_de_naissance;
+		return birthday;
 	}
 	public void setDate_de_naissance(LocalDate date_de_naissance) {
-		Date_de_naissance = date_de_naissance;
+		birthday = date_de_naissance;
 	}
 	public String getAdresse() {
 		return adresse;
@@ -64,10 +71,10 @@ public class Collaborateur {
 		this.adresse = adresse;
 	}
 	public String getNum_SecuSoc() {
-		return Num_SecuSoc;
+		return numSecuSoc;
 	}
-	public void setNum_SecuSoc(String num_SecuSoc) {
-		Num_SecuSoc = num_SecuSoc;
+	public void setNum_SecuSoc(String numSecuSoc) {
+		this.numSecuSoc = numSecuSoc;
 	}
 	public String getEmailPro() {
 		return emailPro;
@@ -81,10 +88,28 @@ public class Collaborateur {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	public ZonedDateTime getDateCreation() {
+		return dateCreation;
+	}
+	public void setDateCreation(ZonedDateTime dateCreation) {
+		this.dateCreation = dateCreation;
+	}
 	public boolean isActif() {
 		return actif;
 	}
 	public void setActif(boolean actif) {
 		this.actif = actif;
+	}
+	public String getIntitulePoste() {
+		return intitulePoste;
+	}
+	public void setIntitulePoste(String intitulePoste) {
+		this.intitulePoste = intitulePoste;
+	}
+	public Departement getDepartement() {
+		return departement;
+	}
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
 	}
 }

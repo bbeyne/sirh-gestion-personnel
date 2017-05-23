@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="dev.sgp.entite.Collaborateur" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -19,12 +20,17 @@
 
 <body>
 
-	<h1>Les cocollaborateurs</h1>
-
+	<h1>Les collaborateurs</h1>
+	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
 	<ul>
+		<c:forEach var="collab" items="${listeCollaborateurs}">
+			<li>${collab.matricule} - ${collab.nom} ${collab.prenom}</li>
+		</c:forEach>
+	</ul>
+	<%-- <ul>
 
 		<%
-			List<Collaborateur> listeNoms = (List<Collaborateur>) request.getAttribute("listeNoms");
+			List<Collaborateur> listeNoms = (List<Collaborateur>) request.getAttribute("listeCollaborateurs");
 
 			for (Collaborateur collabo : listeNoms) {
 		%>
@@ -36,12 +42,13 @@
 		<li><%=collabo.getNum_SecuSoc()%></li>
 		<li><%=collabo.getEmailPro()%></li>
 		<li><%=collabo.getPhoto()%></li>
-		<li><%=collabo.isActif() %>
+		<li><%=collabo.getDateCreation() %></li>
+		<li><%=collabo.isActif() %></li>
 		<%
 			}
 		%>
 
-	</ul>
+	</ul> --%>
 </body>
 
 </html>

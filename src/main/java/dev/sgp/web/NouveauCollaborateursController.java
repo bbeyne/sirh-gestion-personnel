@@ -2,6 +2,7 @@ package dev.sgp.web;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.sgp.entite.Collaborateur;
+import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
 import dev.sgp.util.Constantes;
 
@@ -37,7 +39,10 @@ public class NouveauCollaborateursController extends HttpServlet{
 			String emailPro = prenom+"."+nom+"@societe.com";
 			String matricule = UUID.randomUUID().toString();
 			String photo = "tatronche.jpg";
-			Collaborateur Collabo = new Collaborateur(matricule, prenom, nom, birthday, adresse, numSecuSoc, emailPro, photo, true);
+			ZonedDateTime datecreation= ZonedDateTime.now();
+			Collaborateur Collabo = new Collaborateur(matricule, prenom, nom, birthday, adresse, numSecuSoc, emailPro, photo,datecreation, true);
+			Collabo.setDepartement(new Departement(1, "Comptabilité"));
+			Collabo.setIntitulePoste("tappeur");
 			List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
 			collaborateurs.add(Collabo);
 			resp.sendRedirect(req.getContextPath()+ "/collaborateurs/lister");
