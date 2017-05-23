@@ -7,12 +7,11 @@ import dev.sgp.entite.VisiteWeb;
 
 public class VisiteService {
 
-	List<VisiteWeb> listevisite = new ArrayList<>();
+	static List<VisiteWeb> listevisite = new ArrayList<>();
 
 	public List<VisiteWeb> listerVisite() {
 
 		return listevisite;
-
 	}
 
 	public void sauvegarderVisite(VisiteWeb visite) {

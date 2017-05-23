@@ -21,13 +21,18 @@
 <body>
 
 	<h1>Statistiques</h1>
-	
-	<ul>
-		<c:forEach var="visite" items="${listeVisites}">
-			<li>${visite}</li>
-		</c:forEach>
-	</ul>
-	
+	<Table>
+	<thead><tr><td>Chemin</td><td>Nombres de visites</td><td>Min (ms)</td><td> Max (ms)</td><td> Moyenne (ms)</td></tr></thead>
+	<tbody>
+	<c:forEach var="visite" items="${listeVisites}">
+	<tr>
+		
+			<th>${visite.chemin}</th><th> ${visite.compteur}</th><th> ${visite.maxtemps}</th><th> ${visite.mintemps}</th><th> ${visite.moytemps}</th>
+		
+	</tr>
+	</c:forEach>
+	</tbody>
+	</Table>
 </body>
 
 </html>
