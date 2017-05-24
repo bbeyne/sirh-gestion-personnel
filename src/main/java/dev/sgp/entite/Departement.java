@@ -6,6 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class Departement {
 
+	public Departement() {
+		super();
+	}
 	@Id
 	private int Id;
 	private String nom;

@@ -1,33 +1,32 @@
 package dev.sgp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import dev.sgp.entite.Departement;
 
-@ApplicationScoped
+@Stateless
 public class DepartementService {
-	List<Departement> listeDepartement = new ArrayList<>();
+	@PersistenceContext(unitName="sgp-pu") EntityManager em;
 
 	public DepartementService() {
-		super();
-		this.listeDepartement.add(new Departement(1, "Comptabilité"));
-		this.listeDepartement.add(new Departement(2, "Ressources Humaines"));
-		this.listeDepartement.add(new Departement(3, "Informatique"));
-		this.listeDepartement.add(new Departement(4, "Administratif"));
 	}
 
 	public List<Departement> listerDepartement() {
 
-	return listeDepartement;
+		TypedQuery<Departement> query2 = em.createQuery("select departement from Departement departement", Departement.class);
+		return query2.getResultList();
 
 	}
 
 	public void sauvegarderDepartement(Departement departement) {
 
-	listeDepartement.add(departement);
+
+		em.persist(departement);
 
 	}
 }

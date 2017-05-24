@@ -6,10 +6,15 @@ import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
 public class Collaborateur {
+	public Collaborateur(){
+		
+	}
 	public Collaborateur(String matricule, String prenom, String nom, LocalDate birthday, String adresse,
 			String numSecuSoc, String emailPro, String photo, ZonedDateTime dateCreation, boolean actif) {
 		super();
@@ -36,6 +41,8 @@ public class Collaborateur {
 	private ZonedDateTime dateCreation;
 	private boolean actif;
 	private String intitulePoste;
+	@ManyToOne
+	@JoinColumn(name="departement")
 	private Departement departement;
 	
 	

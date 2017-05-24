@@ -1,25 +1,27 @@
 package dev.sgp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import dev.sgp.entite.VisiteWeb;
 
-@ApplicationScoped
+@Stateless
 public class VisiteService {
-
-	static List<VisiteWeb> listevisite = new ArrayList<>();
+	@PersistenceContext(unitName="sgp-pu") EntityManager em;
 
 	public List<VisiteWeb> listerVisite() {
+		TypedQuery<VisiteWeb> query2 = em.createQuery("select visiteweb from VisiteWeb visiteweb", VisiteWeb.class);
+		return query2.getResultList();
 
-		return listevisite;
 	}
 
 	public void sauvegarderVisite(VisiteWeb visite) {
 
-		listevisite.add(visite);
+		em.persist(visite);
 
 	}
 }
