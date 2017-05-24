@@ -16,7 +16,7 @@ import dev.sgp.entite.VisiteWeb;
 import dev.sgp.service.VisiteService;
 
 
-@WebFilter(urlPatterns={"/sgp/*"}, description = "frequentation filter")
+@WebFilter(urlPatterns={"/collaborateurs/*"}, description = "frequentation filter")
 public class FrequentationFilter implements Filter {
 
 	@Override

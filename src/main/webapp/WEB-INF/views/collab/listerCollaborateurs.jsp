@@ -70,12 +70,27 @@
 		</div>
 	</form>
 
+	<div class="jumbotron row ">
 
-	<ul>
-		<c:forEach var="collab" items="${listeCollaborateurs}">
-			<li>${collab.matricule}-${collab.nom}${collab.prenom}</li>
+		<c:forEach var="collab" items="${ listeCollaborateurs }">
+
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+
+				<ul>
+					<li>Matricule : ${ collab.getMatricule() } <br> Nom : ${ collab.getNom() }<br>
+						Prenom : ${ collab.getPrenom() }<br> Date de Naissance : ${ collab.getDate_de_naissance() }<br>
+						Adresse : ${ collab.getAdresse() }<br> Numero de séurité sociale :
+						${ collab.getNum_SecuSoc() }<br> Date de création : ${ collab.getDateCreation() }<br>
+						Email professionel : ${ collab.getEmailPro() }<br>  Actif : ${ collab.isActif() }<br>
+						<br> <br>
+					</li>
+				</ul>
+
+			</div>
+
 		</c:forEach>
-	</ul>
+
+	</div>
 	<%-- <ul>
 
 		<%
