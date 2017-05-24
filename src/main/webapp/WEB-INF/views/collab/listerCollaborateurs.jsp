@@ -19,9 +19,12 @@
 </head>
 
 <body>
-
-	<h1>Les collaborateurs</h1>
 	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
+	<a href="<c:url value='/activites'></c:url>" class="btn btn-primary">Activite</a>
+	<a href="<c:url value='/statistiques'></c:url>" class="btn btn-primary">Statistiques</a>
+	<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-primary">Editer</a>
+	<h1>Les collaborateurs</h1>
+	
 	<ul>
 		<c:forEach var="collab" items="${listeCollaborateurs}">
 			<li>${collab.matricule} - ${collab.nom} ${collab.prenom}</li>

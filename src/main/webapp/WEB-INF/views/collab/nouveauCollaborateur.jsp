@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ page import="java.time.ZonedDateTime" %>
 <%@ page import="java.time.LocalDate" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -18,7 +19,10 @@
 </head>
 
 <body>
-
+	<a href="<c:url value='/collaborateurs/lister'></c:url>" class="btn btn-primary">Lister</a>
+	<a href="<c:url value='/activites'></c:url>" class="btn btn-primary">Activite</a>
+	<a href="<c:url value='/statistiques'></c:url>" class="btn btn-primary">Statistiques</a>
+	<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-primary">Editer</a>
 	<h1>Nouveau collaborateur</h1>
 	<form class="form-horizontal" method="POST">
 		<fieldset>

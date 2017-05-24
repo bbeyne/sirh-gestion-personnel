@@ -3,10 +3,11 @@ package dev.sgp.web;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.UUID;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,15 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.entite.Departement;
 import dev.sgp.service.CollaborateurService;
-import dev.sgp.util.Constantes;
 
+@WebServlet("/collaborateurs/nouveau")
 public class NouveauCollaborateursController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/WEB-INF/views/collab/nouveauCollaborateur.jsp")
 		.forward(req, resp);
 	}
-	private CollaborateurService collabService = Constantes.COLLAB_SERVICE;
+	@Inject private CollaborateurService collabService;
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws
 
@@ -43,8 +44,7 @@ public class NouveauCollaborateursController extends HttpServlet{
 			Collaborateur Collabo = new Collaborateur(matricule, prenom, nom, birthday, adresse, numSecuSoc, emailPro, photo,datecreation, true);
 			Collabo.setDepartement(new Departement(1, "Comptabilité"));
 			Collabo.setIntitulePoste("tappeur");
-			List<Collaborateur> collaborateurs = collabService.listerCollaborateurs();
-			collaborateurs.add(Collabo);
+			collabService.sauvegarderCollaborateur(Collabo);
 			resp.sendRedirect(req.getContextPath()+ "/collaborateurs/lister");
 			
 		}

@@ -20,18 +20,18 @@
 
 <body>
 	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
-	<a href="<c:url value='/activites'></c:url>" class="btn btn-primary">Activite</a>
+	<a href="<c:url value='/statistiques'></c:url>" class="btn btn-primary">Statistiques</a>
 	<a href="<c:url value='/collaborateurs/lister'></c:url>" class="btn btn-primary">Lister</a>
 	<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-primary">Editer</a>
-	<h1>Statistiques</h1>
+	<h1>Activités depuis le démarrage de l'application</h1>
 	<Table>
-	<thead><tr><td>Chemin</td><td>Nombres de visites</td><td>Min (ms)</td><td> Max (ms)</td><td> Moyenne (ms)</td></tr></thead>
+	<thead><tr><td>Date/Heure</td><td>Libelle</td></tr></thead>
 	<tbody>
-	<c:forEach var="visite" items="${listeVisites}">
+	<c:forEach var="activite" items="${listeActivites}">
 	<tr>
 		
-			<th>${visite.chemin}</th><th> ${visite.compteur}</th><th> ${visite.maxtemps}</th><th> ${visite.mintemps}</th><th> ${visite.moytemps}</th>
-		
+			<th>${activite.dateform()}</th><th> ${activite.getType().toString()} - matricule : ${activite.getMatricule()}</th>
+					
 	</tr>
 	</c:forEach>
 	</tbody>
