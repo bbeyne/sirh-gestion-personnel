@@ -41,9 +41,7 @@ public class NouveauCollaborateursController extends HttpServlet{
 			String matricule = UUID.randomUUID().toString();
 			String photo = "tatronche.jpg";
 			ZonedDateTime datecreation= ZonedDateTime.now();
-			Collaborateur Collabo = new Collaborateur(matricule, prenom, nom, birthday, adresse, numSecuSoc, emailPro, photo,datecreation, true);
-			Collabo.setDepartement(new Departement(1, "Comptabilité"));
-			Collabo.setIntitulePoste("tappeur");
+			Collaborateur Collabo = new Collaborateur(matricule, prenom, nom, birthday, adresse, numSecuSoc, emailPro, photo,datecreation, true, "glandeur", new Departement(1,"Comptabilité"));
 			collabService.sauvegarderCollaborateur(Collabo);
 			resp.sendRedirect(req.getContextPath()+ "/collaborateurs/lister");
 			

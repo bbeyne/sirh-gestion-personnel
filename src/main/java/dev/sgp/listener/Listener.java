@@ -21,12 +21,17 @@ public class Listener implements ServletContextListener{
 @Override
 public void contextInitialized(ServletContextEvent sce) {
 	// TODO Auto-generated method stub
-	Collaborateur collabo = new Collaborateur("mfzeho", "Pierre", "Paul", LocalDate.of(0, 1, 25), "Jacques", "000000000000000", "Pierre.Paul@societe.com", "tatronche.jpg", ZonedDateTime.now(), true);
-	collabService.sauvegarderCollaborateur(collabo);
-	depService.sauvegarderDepartement(new Departement(1, "Comptabilité"));
+	Departement dep = new Departement(1, "Comptabilité");
+	depService.sauvegarderDepartement(dep);
 	depService.sauvegarderDepartement(new Departement(2, "Ressources Humaines"));
 	depService.sauvegarderDepartement(new Departement(3, "Informatique"));
 	depService.sauvegarderDepartement(new Departement(4, "Administratif"));
+	Collaborateur collabo = new Collaborateur("mfzeho", "Pierre", "Paul", LocalDate.of(0, 1, 25), "Jacques", "000000000000000", "Pierre.Paul@societe.com", "tatronche.jpg", ZonedDateTime.now(), true,"chef",dep);
+	collabService.sauvegarderCollaborateur(collabo);
+	Collaborateur collabo2 = new Collaborateur("bbb", "Pierre", "Paul", LocalDate.of(0, 1, 25), "Jacques", "000000000000000", "Pierre.Paul@societe.com", "tatronche.jpg", ZonedDateTime.now(), true,"chef",new Departement(3, "Informatique"));
+	collabService.sauvegarderCollaborateur(collabo2);
+
+
 }
 
 @Override

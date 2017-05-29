@@ -6,7 +6,6 @@ import java.time.ZonedDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -16,7 +15,7 @@ public class Collaborateur {
 		
 	}
 	public Collaborateur(String matricule, String prenom, String nom, LocalDate birthday, String adresse,
-			String numSecuSoc, String emailPro, String photo, ZonedDateTime dateCreation, boolean actif) {
+			String numSecuSoc, String emailPro, String photo, ZonedDateTime dateCreation, boolean actif, String intitulePoste, Departement departement) {
 		super();
 		this.matricule = matricule;
 		this.prenom = prenom;
@@ -28,7 +27,11 @@ public class Collaborateur {
 		this.photo = photo;
 		this.actif = actif;
 		this.dateCreation=dateCreation;
+		this.departement=departement;
+		this.intitulePoste=intitulePoste;
+		
 	}
+	
 	@Id
 	private String matricule;
 	private String prenom;
@@ -42,11 +45,30 @@ public class Collaborateur {
 	private boolean actif;
 	private String intitulePoste;
 	@ManyToOne
-	@JoinColumn(name="departement")
 	private Departement departement;
+	private String Banque="BNP";
+	private String Bic="4354254";
+	private String IBAN="30004";
 	
 	
-	
+	public String getBanque() {
+		return Banque;
+	}
+	public void setBanque(String banque) {
+		Banque = banque;
+	}
+	public String getBic() {
+		return Bic;
+	}
+	public void setBic(String bic) {
+		Bic = bic;
+	}
+	public String getIBAN() {
+		return IBAN;
+	}
+	public void setIBAN(String iBAN) {
+		IBAN = iBAN;
+	}
 	public String getMatricule() {
 		return matricule;
 	}
@@ -119,4 +141,5 @@ public class Collaborateur {
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
+
 }

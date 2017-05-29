@@ -29,4 +29,36 @@ public class CollaborateurService {
 		CollabEvt nouveauCollabEvt = new CollabEvt(collab.getDateCreation(), TypeCollabEvt.valueOf("CREATION_COLLAB"), collab.getMatricule());
 		collabEvt.fire(nouveauCollabEvt);
 	}
+	public List<Collaborateur> listerCollaborateursbyDep(Integer depId) {
+		TypedQuery<Collaborateur> query2 = em.createQuery("SELECT c FROM Collaborateur c WHERE c.departement.id=:depId", Collaborateur.class)
+				.setParameter("depId", depId);
+		return query2.getResultList();
+	}
+	public Collaborateur CollaborateurbyMatricule(String matricule) {
+		TypedQuery<Collaborateur> query2 = em.createQuery("SELECT c FROM Collaborateur c WHERE c.matricule=:matricule", Collaborateur.class)
+				.setParameter("matricule", matricule);
+		return query2.getResultList().get(0);
+	}
+
+	public void collabmodif(String matricule, Collaborateur collab) {
+		Collaborateur collabo=CollaborateurbyMatricule(matricule);
+		if(collab.getDateCreation()!=null) collabo.setDateCreation(collab.getDateCreation());
+		if(collab.getIntitulePoste()!=null) collabo.setIntitulePoste(collab.getIntitulePoste());
+		if(collab.getDate_de_naissance()!=null) collabo.setDate_de_naissance(collab.getDate_de_naissance());
+		if(collab.getDepartement()!=null) collabo.setDepartement(collab.getDepartement());
+		if(collab.getPhoto()!=null) collabo.setPhoto(collab.getPhoto());
+		if(collab.getEmailPro()!=null) collabo.setEmailPro(collab.getEmailPro());
+	}
+
+	public String CollabCoordbanc(String matricule) {
+		Collaborateur collabo=CollaborateurbyMatricule(matricule);
+		return "Banque : " + collabo.getBanque()+ "\n IBAN : " + collabo.getIBAN()+"\n BIC : "+ collabo.getBic();
+	}
+
+	public void banqmodif(String matricule, Collaborateur collab) {
+		Collaborateur collabo=CollaborateurbyMatricule(matricule);
+		if(collab.getBanque()!=null) collabo.setBanque(collab.getBanque());
+		if(collab.getBic()!=null) collabo.setBic(collab.getBic());
+		if(collab.getIBAN()!=null) collabo.setIBAN(collab.getIBAN());		
+	}
 }

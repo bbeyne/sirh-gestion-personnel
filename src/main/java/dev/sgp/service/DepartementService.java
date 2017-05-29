@@ -24,8 +24,6 @@ public class DepartementService {
 	}
 
 	public void sauvegarderDepartement(Departement departement) {
-
-
 		em.persist(departement);
 
 	}

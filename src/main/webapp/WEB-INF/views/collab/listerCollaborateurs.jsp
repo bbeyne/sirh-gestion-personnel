@@ -19,12 +19,9 @@
 </head>
 
 <body>
-	<a href="<c:url value='/collaborateurs/nouveau'></c:url>"
-		class="btn btn-primary">Nouveau</a>
+	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
 	<a href="<c:url value='/activites'></c:url>" class="btn btn-primary">Activite</a>
 	<a href="<c:url value='/statistiques'></c:url>" class="btn btn-primary">Statistiques</a>
-	<a href="<c:url value='/collaborateurs/editer'></c:url>"
-		class="btn btn-primary">Editer</a>
 	<h1>Les collaborateurs</h1>
 	<form class="form-horizontal">
 
@@ -84,10 +81,11 @@
 						Email professionel : ${ collab.getEmailPro() }<br>  Actif : ${ collab.isActif() }<br>
 						<br> <br>
 					</li>
+					<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-xs btn-warning pull-right">
+						<span class="glyphicon glyphicon-pencil"></span> Modifier</a>
 				</ul>
-
+			
 			</div>
-
 		</c:forEach>
 
 	</div>

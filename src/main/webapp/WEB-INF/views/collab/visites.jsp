@@ -22,7 +22,6 @@
 	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
 	<a href="<c:url value='/activites'></c:url>" class="btn btn-primary">Activite</a>
 	<a href="<c:url value='/collaborateurs/lister'></c:url>" class="btn btn-primary">Lister</a>
-	<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-primary">Editer</a>
 	<h1>Statistiques</h1>
 	<Table>
 	<thead><tr><td>Chemin</td><td>Nombres de visites</td><td>Min (ms)</td><td> Max (ms)</td><td> Moyenne (ms)</td></tr></thead>

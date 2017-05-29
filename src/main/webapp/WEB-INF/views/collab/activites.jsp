@@ -22,7 +22,6 @@
 	<a href="<c:url value='/collaborateurs/nouveau'></c:url>" class="btn btn-primary">Nouveau</a>
 	<a href="<c:url value='/statistiques'></c:url>" class="btn btn-primary">Statistiques</a>
 	<a href="<c:url value='/collaborateurs/lister'></c:url>" class="btn btn-primary">Lister</a>
-	<a href="<c:url value='/collaborateurs/editer'></c:url>" class="btn btn-primary">Editer</a>
 	<h1>Activités depuis le démarrage de l'application</h1>
 	<Table>
 	<thead><tr><td>Date/Heure</td><td>Libelle</td></tr></thead>
