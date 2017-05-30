@@ -2,6 +2,7 @@ package dev.sgp.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 
 import dev.sgp.entite.CollabEvt;
 import dev.sgp.entite.Collaborateur;
@@ -55,10 +57,12 @@ public class CollaborateurService {
 		return "Banque : " + collabo.getBanque()+ "\n IBAN : " + collabo.getIBAN()+"\n BIC : "+ collabo.getBic();
 	}
 
-	public void banqmodif(String matricule, Collaborateur collab) {
+	public void banqmodif(String matricule, Map<String, String> banqueWrap) {
 		Collaborateur collabo=CollaborateurbyMatricule(matricule);
-		if(collab.getBanque()!=null) collabo.setBanque(collab.getBanque());
-		if(collab.getBic()!=null) collabo.setBic(collab.getBic());
-		if(collab.getIBAN()!=null) collabo.setIBAN(collab.getIBAN());		
+		collabo.setBanque(banqueWrap.get("Banque"));
+		collabo.setBic(banqueWrap.get("Bic"));
+		collabo.setIBAN(banqueWrap.get("Iban"));
 	}
+	
+	
 }

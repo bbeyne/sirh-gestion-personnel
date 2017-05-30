@@ -46,9 +46,9 @@ public class Collaborateur {
 	private String intitulePoste;
 	@ManyToOne
 	private Departement departement;
-	private String Banque="BNP";
-	private String Bic="4354254";
-	private String IBAN="30004";
+	private String Banque;
+	private String Bic;
+	private String IBAN;
 	
 	
 	public String getBanque() {
